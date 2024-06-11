@@ -16,7 +16,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
     basic.pause(100)
     basic.showLeds(`
-        . . . # .
+        . . . # #
         . . . . .
         . . . . .
         . . . . .
@@ -24,35 +24,35 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # .
-        . . . # .
+        . . . # #
+        . . . # #
         . . . . .
         . . . . .
         . . . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # .
-        . . . # .
-        . . . # .
+        . . . # #
+        . . . # #
+        . . . # #
         . . . . .
         . . . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . # .
+        . . . # #
+        . . . # #
+        . . . # #
+        . . . # #
         . . . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . # .
+        . . . # #
+        . . . # #
+        . . . # #
+        . . . # #
+        . . . # #
         `)
     basic.pause(100)
     basic.showLeds(`
@@ -63,7 +63,7 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
         . . . . .
         `)
     // Send a number 1-5 for layer 1
-    radio.sendNumber(4)
+    radio.sendNumber(3)
 })
 input.onButtonPressed(Button.A, function () {
     basic.pause(100)
@@ -117,6 +117,13 @@ input.onButtonPressed(Button.A, function () {
     // Send a number 1-5 for layer 1
     radio.sendNumber(0)
 })
+input.onGesture(Gesture.TiltLeft, function () {
+    if (rule1) {
+        rule1 = 0
+    } else {
+        rule1 = 1
+    }
+})
 function attack (num: number) {
     if (num <= 2 && !(rule1)) {
         led.plot(num, 0)
@@ -137,8 +144,14 @@ function attack (num: number) {
         led.plot(2, 1)
     } else {
         led.plot(num, 0)
+        led.plot(num + 1, 0)
+        basic.pause(200)
         led.plot(num, 1)
+        led.plot(num + 1, 1)
+        basic.pause(200)
         led.plot(num, 2)
+        led.plot(num + 1, 2)
+        basic.pause(200)
         led.plot(3, 3)
         led.plot(4, 3)
     }
@@ -244,6 +257,16 @@ input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
 })
 input.onGesture(Gesture.Shake, function () {
+	
+})
+input.onGesture(Gesture.TiltRight, function () {
+    if (rule2) {
+        rule2 = 0
+    } else {
+        rule2 = 1
+    }
+})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     basic.pause(100)
     basic.showLeds(`
         . . # . .
@@ -294,58 +317,6 @@ input.onGesture(Gesture.Shake, function () {
         `)
     // Send a number 1-5 for layer 1
     radio.sendNumber(2)
-})
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    basic.pause(100)
-    basic.showLeds(`
-        . . . # .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . # .
-        . . . # .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . . .
-        . . . . .
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . . .
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . # .
-        . . . # .
-        `)
-    basic.pause(100)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-    // Send a number 1-5 for layer 1
-    radio.sendNumber(3)
 })
 let rule2 = 0
 let rule1 = 0
