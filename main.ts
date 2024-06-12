@@ -1,14 +1,14 @@
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 0) {
-        attack(0)
+        network(0)
     } else if (receivedNumber == 1) {
-        attack(1)
+        network(1)
     } else if (receivedNumber == 2) {
-        attack(2)
+        network(2)
     } else if (receivedNumber == 3) {
-        attack(3)
+        network(3)
     } else if (receivedNumber == 4) {
-        attack(4)
+        network(4)
     } else {
         basic.showString("Err")
     }
@@ -117,14 +117,7 @@ input.onButtonPressed(Button.A, function () {
     // Send a number 1-5 for layer 1
     radio.sendNumber(0)
 })
-input.onGesture(Gesture.TiltLeft, function () {
-    if (rule1) {
-        rule1 = 0
-    } else {
-        rule1 = 1
-    }
-})
-function attack (num: number) {
+function network (num: number) {
     if (num <= 2 && !(rule1)) {
         led.plot(num, 0)
         led.plot(num, 1)
@@ -156,6 +149,46 @@ function attack (num: number) {
         led.plot(4, 3)
     }
 }
+input.onGesture(Gesture.TiltLeft, function () {
+    if (rule1) {
+        rule1 = 0
+    } else {
+        rule1 = 1
+    }
+    if (rule1 && rule2) {
+        basic.showLeds(`
+            . . . . .
+            # # # . .
+            . . . . .
+            . . . # #
+            . . . . .
+            `)
+    } else if (rule2) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . # #
+            . . . . .
+            `)
+    } else if (rule1) {
+        basic.showLeds(`
+            . . . . .
+            # # # . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    } else {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    }
+})
 input.onButtonPressed(Button.AB, function () {
     if (rule1 && rule2) {
         basic.showLeds(`
@@ -256,14 +289,44 @@ input.onButtonPressed(Button.B, function () {
     // Send a number 1-5 for layer 1
     radio.sendNumber(1)
 })
-input.onGesture(Gesture.Shake, function () {
-	
-})
 input.onGesture(Gesture.TiltRight, function () {
     if (rule2) {
         rule2 = 0
     } else {
         rule2 = 1
+    }
+    if (rule1 && rule2) {
+        basic.showLeds(`
+            . . . . .
+            # # # . .
+            . . . . .
+            . . . # #
+            . . . . .
+            `)
+    } else if (rule2) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . # #
+            . . . . .
+            `)
+    } else if (rule1) {
+        basic.showLeds(`
+            . . . . .
+            # # # . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+    } else {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
     }
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
