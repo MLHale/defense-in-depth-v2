@@ -16,43 +16,43 @@ radio.onReceivedNumber(function (receivedNumber) {
 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
     basic.pause(100)
     basic.showLeds(`
-        . . . # #
         . . . . .
         . . . . .
         . . . . .
         . . . . .
+        # # . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # #
-        . . . # #
         . . . . .
         . . . . .
         . . . . .
+        # # . . .
+        # # . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # #
-        . . . # #
-        . . . # #
         . . . . .
         . . . . .
+        # # . . .
+        # # . . .
+        # # . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # #
-        . . . # #
-        . . . # #
-        . . . # #
         . . . . .
+        # # . . .
+        # # . . .
+        # # . . .
+        # # . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . . # #
-        . . . # #
-        . . . # #
-        . . . # #
-        . . . # #
+        # # . . .
+        # # . . .
+        # # . . .
+        # # . . .
+        # # . . .
         `)
     basic.pause(100)
     basic.showLeds(`
@@ -68,43 +68,43 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
 input.onButtonPressed(Button.A, function () {
     basic.pause(100)
     basic.showLeds(`
-        # . . . .
         . . . . .
         . . . . .
         . . . . .
         . . . . .
+        . . . . #
         `)
     basic.pause(100)
     basic.showLeds(`
-        # . . . .
-        # . . . .
         . . . . .
         . . . . .
         . . . . .
+        . . . . #
+        . . . . #
         `)
     basic.pause(100)
     basic.showLeds(`
-        # . . . .
-        # . . . .
-        # . . . .
         . . . . .
         . . . . .
+        . . . . #
+        . . . . #
+        . . . . #
         `)
     basic.pause(100)
     basic.showLeds(`
-        # . . . .
-        # . . . .
-        # . . . .
-        # . . . .
         . . . . .
+        . . . . #
+        . . . . #
+        . . . . #
+        . . . . #
         `)
     basic.pause(100)
     basic.showLeds(`
-        # . . . .
-        # . . . .
-        # . . . .
-        # . . . .
-        # . . . .
+        . . . . #
+        . . . . #
+        . . . . #
+        . . . . #
+        . . . . #
         `)
     basic.pause(100)
     basic.showLeds(`
@@ -120,16 +120,29 @@ input.onButtonPressed(Button.A, function () {
 function network (num: number) {
     if (num <= 2 && !(rule1)) {
         led.plot(num, 0)
+        basic.pause(200)
         led.plot(num, 1)
+        basic.pause(200)
         led.plot(num, 2)
+        basic.pause(200)
         led.plot(num, 3)
+        basic.pause(200)
         led.plot(num, 4)
     } else if (num >= 3 && !(rule2)) {
-        led.plot(num, 0)
-        led.plot(num, 1)
-        led.plot(num, 2)
-        led.plot(num, 3)
-        led.plot(num, 4)
+        led.plot(3, 0)
+        led.plot(4, 0)
+        basic.pause(200)
+        led.plot(3, 1)
+        led.plot(4, 1)
+        basic.pause(200)
+        led.plot(3, 2)
+        led.plot(4, 2)
+        basic.pause(200)
+        led.plot(3, 3)
+        led.plot(4, 3)
+        basic.pause(200)
+        led.plot(3, 4)
+        led.plot(4, 4)
     } else if (num <= 2 && rule1) {
         led.plot(num, 0)
         led.plot(0, 1)
@@ -240,43 +253,43 @@ radio.onReceivedString(function (receivedString) {
 input.onButtonPressed(Button.B, function () {
     basic.pause(100)
     basic.showLeds(`
-        . # . . .
         . . . . .
         . . . . .
         . . . . .
         . . . . .
+        . . . # .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . # . . .
-        . # . . .
         . . . . .
         . . . . .
         . . . . .
+        . . . # .
+        . . . # .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . # . . .
-        . # . . .
-        . # . . .
         . . . . .
         . . . . .
+        . . . # .
+        . . . # .
+        . . . # .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . # . . .
-        . # . . .
-        . # . . .
-        . # . . .
         . . . . .
+        . . . # .
+        . . . # .
+        . . . # .
+        . . . # .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . # . . .
-        . # . . .
-        . # . . .
-        . # . . .
-        . # . . .
+        . . . # .
+        . . . # .
+        . . . # .
+        . . . # .
+        . . . # .
         `)
     basic.pause(100)
     basic.showLeds(`
@@ -332,35 +345,35 @@ input.onGesture(Gesture.TiltRight, function () {
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     basic.pause(100)
     basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
         . . # . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
         `)
     basic.pause(100)
     basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
         . . # . .
         . . # . .
-        . . . . .
-        . . . . .
-        . . . . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . # . .
-        . . # . .
-        . . # . .
         . . . . .
         . . . . .
+        . . # . .
+        . . # . .
+        . . # . .
         `)
     basic.pause(100)
     basic.showLeds(`
-        . . # . .
-        . . # . .
-        . . # . .
-        . . # . .
         . . . . .
+        . . # . .
+        . . # . .
+        . . # . .
+        . . # . .
         `)
     basic.pause(100)
     basic.showLeds(`
@@ -387,5 +400,5 @@ let rule1 = 0
 radio.setGroup(1)
 // Set this to be the same as your groupmate
 radio.setFrequencyBand(1)
-rule1 = 1
-rule2 = 1
+rule1 = 0
+rule2 = 0
