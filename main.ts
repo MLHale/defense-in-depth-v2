@@ -66,7 +66,6 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
     radio.sendNumber(3)
 })
 input.onButtonPressed(Button.A, function () {
-    basic.pause(100)
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -74,7 +73,6 @@ input.onButtonPressed(Button.A, function () {
         . . . . .
         . . . . #
         `)
-    basic.pause(100)
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -82,7 +80,6 @@ input.onButtonPressed(Button.A, function () {
         . . . . #
         . . . . #
         `)
-    basic.pause(100)
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -90,7 +87,6 @@ input.onButtonPressed(Button.A, function () {
         . . . . #
         . . . . #
         `)
-    basic.pause(100)
     basic.showLeds(`
         . . . . .
         . . . . #
@@ -98,7 +94,6 @@ input.onButtonPressed(Button.A, function () {
         . . . . #
         . . . . #
         `)
-    basic.pause(100)
     basic.showLeds(`
         . . . . #
         . . . . #
@@ -106,7 +101,6 @@ input.onButtonPressed(Button.A, function () {
         . . . . #
         . . . . #
         `)
-    basic.pause(100)
     basic.showLeds(`
         . . . . .
         . . . . .
@@ -122,11 +116,15 @@ function network (num: number) {
         led.plot(num, 0)
         basic.pause(200)
         led.plot(num, 1)
-        basic.pause(200)
+        basic.pause(100)
         led.plot(num, 2)
         basic.pause(200)
         led.plot(num, 3)
         basic.pause(200)
+        for (let index = 0; index < 10; index++) {
+            led.toggle(num, 4)
+            basic.pause(100)
+        }
         led.plot(num, 4)
     } else if (num >= 3 && !(rule2)) {
         led.plot(3, 0)
@@ -141,10 +139,23 @@ function network (num: number) {
         led.plot(3, 3)
         led.plot(4, 3)
         basic.pause(200)
+        led.unplot(3, 4)
+        led.unplot(4, 4)
+        for (let index = 0; index < 10; index++) {
+            led.toggle(3, 4)
+            led.toggle(4, 4)
+            basic.pause(100)
+        }
         led.plot(3, 4)
         led.plot(4, 4)
     } else if (num <= 2 && rule1) {
         led.plot(num, 0)
+        led.unplot(num, 1)
+        for (let index = 0; index < 10; index++) {
+            led.toggle(num, 1)
+            basic.pause(100)
+        }
+        led.plot(num, 1)
         led.plot(0, 1)
         led.plot(1, 1)
         led.plot(2, 1)
@@ -158,6 +169,13 @@ function network (num: number) {
         led.plot(num, 2)
         led.plot(num + 1, 2)
         basic.pause(200)
+        led.unplot(3, 3)
+        led.unplot(4, 3)
+        for (let index = 0; index < 10; index++) {
+            led.toggle(3, 3)
+            led.toggle(4, 3)
+            basic.pause(100)
+        }
         led.plot(3, 3)
         led.plot(4, 3)
     }
@@ -203,6 +221,29 @@ input.onGesture(Gesture.TiltLeft, function () {
     }
 })
 input.onButtonPressed(Button.AB, function () {
+    basic.showLeds(`
+        # # # # .
+        # . . . #
+        # . . . #
+        # . . . #
+        # # # # .
+        `)
+    basic.pause(200)
+    basic.showLeds(`
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        `)
+    basic.pause(200)
+    basic.showLeds(`
+        # # # # .
+        # . . . #
+        # . . . #
+        # . . . #
+        # # # # .
+        `)
     if (rule1 && rule2) {
         basic.showLeds(`
             . . . . .
